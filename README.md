@@ -1,8 +1,9 @@
 # React Leaflet Ant Path
 
-## *A port of Leaflet AntPath for React Leaflet*
-[Demo of the Leaflet AntPath](http://rubenspgcavalcante.github.io/leaflet-ant-path)
-[Original plugin](https://github.com/rubenspgcavalcante/leaflet-ant-path/)
+## *A port of Leaflet AntPath for React Leaflet* 
+[Demo of the Leaflet AntPath](http://rubenspgcavalcante.github.io/leaflet-ant-path)  
+[Original plugin](https://github.com/rubenspgcavalcante/leaflet-ant-path/)  
+[React Leaflet](https://github.com/PaulLeCam/react-leaflet)
 
 ## Contributing
 Want to help? Open a [issue](https://github.com/rubenspgcavalcante/react-leaflet-ant-path/issues) or make a PR!  
@@ -32,7 +33,7 @@ The AntPath component is exported by default:
 ```
 
 ### Parameters
-The same as the original plugin
+The same as the original plugin.
 
 | name | type | example | description |
 |------|------|---------| ------------|
