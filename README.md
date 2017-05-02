@@ -3,7 +3,6 @@
 ## *A port of Leaflet AntPath for React Leaflet* 
 [Demo of the Leaflet AntPath](http://rubenspgcavalcante.github.io/leaflet-ant-path)  
 [Original plugin](https://github.com/rubenspgcavalcante/leaflet-ant-path/)  
-[React Leaflet](https://github.com/PaulLeCam/react-leaflet)
 
 ## Contributing
 Want to help? Open a [issue](https://github.com/rubenspgcavalcante/react-leaflet-ant-path/issues) or make a PR!  
@@ -16,10 +15,10 @@ Via NPM:
 ```
 
 ### Requirements
-  - leaflet >= v1
-  - react >= v15
-  - react-leaflet >= v1
-  - leaflet-ant-path > v0.6.2
+  - [leaflet](https://www.npmjs.com/package/leaflet) >= v1
+  - [react](https://www.npmjs.com/package/react) >= v15
+  - [react-leaflet](https://www.npmjs.com/package/react-leaflet) >= v1
+  - [leaflet-ant-path](https://www.npmjs.com/package/leaflet-ant-path) > v0.6.2
     
 
 ### Using the plugin
