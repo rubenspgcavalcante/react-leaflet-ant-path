@@ -6,15 +6,9 @@ module.exports = {
     },
     devtool: "source-map",
     externals: {
-        "react": {
-            root: "LeafletReact"
-        },
-        "react-leaflet": {
-            root: "React"
-        },
-        "leaflet-ant-path": {
-            root: "LeafletAntPath"
-        },
+        "react": "react",
+        "react-leaflet": "react-leaflet",
+        "leaflet-ant-path": "leaflet-ant-path",
         "leaflet": {
             root: "L",
             commonjs: "leaflet",
