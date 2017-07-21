@@ -11,7 +11,11 @@ Also, see the guide on [how to contribute](/.github/contributing.md).
 ### Installing
 Via NPM:
 ```
- npm install leaflet-ant-path
+ npm install leaflet-ant-path react-leaflet-ant-path
+```
+Or Yarn
+```
+ yarn add leaflet-ant-path react-leaflet-ant-path
 ```
 
 ### Requirements
