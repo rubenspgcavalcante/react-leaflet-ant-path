@@ -1,4 +1,4 @@
-import {PropTypes} from "react";
+import {array, object} from "prop-types";
 import {Path} from "react-leaflet";
 import {antPath} from "leaflet-ant-path";
 
@@ -6,8 +6,8 @@ export default class AntPathComponent extends Path {
     static defaultProps = {};
 
     static propTypes = {
-        positions: PropTypes.array.isRequired,
-        options: PropTypes.object
+        positions: array.isRequired,
+        options: object
     };
 
     createLeafletElement(props) {
