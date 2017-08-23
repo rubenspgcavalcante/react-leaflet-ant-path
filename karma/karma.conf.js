@@ -1,3 +1,4 @@
+const {resolve} = require('path');
 const webpackLoaders = require("./../webpack/loaders.js");
 
 module.exports = function (config) {
@@ -34,7 +35,7 @@ module.exports = function (config) {
                     {
                         enforce: "pre",
                         test: /\.js$/,
-                        include: './src/',
+                        include: resolve('./src/'),
                         loader: 'istanbul-instrumenter'
                     }
                 ])
