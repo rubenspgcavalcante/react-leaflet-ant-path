@@ -11,7 +11,7 @@ let configuration = {
     output: {
         path: path.resolve("./dist"),
         filename: "[name].js",
-        library: "leaflet-ant-path",
+        library: "react-leaflet-ant-path",
         libraryTarget: "umd"
     },
     resolve: {
