@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet-ant-path",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "React component for the leaflet-ant-path plugin",
   "keywords": [
     "leaflet",
