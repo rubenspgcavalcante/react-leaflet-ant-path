@@ -1,8 +1,9 @@
-import React, {Component, PropTypes} from "react";
+import React, {Component} from "react";
+import {oneOfType, string, object} from "prop-types";
 
 export default class Logger extends Component {
     static propTypes = {
-        message: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+        message: oneOfType([string, object])
     };
 
     _format(msg) {
