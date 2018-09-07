@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/rubenspgcavalcante/react-leaflet-ant-path/issues"
   },
-  "perDependencie": {
+  "perDependencies": {
     "leaflet": "2",
     "leaflet-ant-path": "^1.1.2",
     "react": ">= 16.3",
