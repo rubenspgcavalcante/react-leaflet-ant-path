@@ -4,6 +4,8 @@
 [Demo of the Leaflet AntPath](http://rubenspgcavalcante.github.io/leaflet-ant-path)  
 [Original plugin](https://github.com/rubenspgcavalcante/leaflet-ant-path/)  
 
+**Now supporting react-leaflet version 2!**
+
 ## Contributing
 Want to help? Open a [issue](https://github.com/rubenspgcavalcante/react-leaflet-ant-path/issues) or make a PR!  
 Also, see the guide on [how to contribute](/.github/contributing.md).
@@ -19,10 +21,10 @@ Or Yarn
 ```
 
 ### Requirements
-  - [leaflet](https://www.npmjs.com/package/leaflet) >= v1
-  - [react](https://www.npmjs.com/package/react) >= v15
-  - [react-leaflet](https://www.npmjs.com/package/react-leaflet) >= v1
-  - [leaflet-ant-path](https://www.npmjs.com/package/leaflet-ant-path) > v0.6.2
+  - [leaflet](https://www.npmjs.com/package/leaflet) == v2
+  - [react](https://www.npmjs.com/package/react) >= v16.3
+  - [react-leaflet](https://www.npmjs.com/package/react-leaflet) == v2
+  - [leaflet-ant-path](https://www.npmjs.com/package/leaflet-ant-path) >= v1.1.2
     
 
 ### Using the plugin
@@ -38,14 +40,14 @@ The AntPath component is exported by default:
 ### Parameters
 The same as the original plugin.
 
-| name | type | example | description |
-|------|------|---------| ------------|
-|positions| L.LatLng[] **or** Array\[number, number\]  | \[ \[0, 10\], \[-20, 0\], ... \] | A array of latitude and longitudes (same as used in [Polyline constructor](http://leafletjs.com/reference.html#polyline) )
-|options| Object  | {color: 'red', weight: 5, ...}  | Same as the [Polyline options](http://leafletjs.com/reference.html#polyline-options) plus the **extra** options bellow
-|options.paused| boolean | true/false | Starts with the animation paused (default: false)
-|options.pulseColor| string | #FF00FF | Adds a color to the dashed flux (default: 'white')
-|options.delay | string | 120 | Add a delay to the animation flux (default: 400)
-|options.dashArray| [number, number] **or** string | [15, 30] |The size of the animated dashes (default: "10, 20"). See also [the pattern](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray)
+| name               | type                                      | example                          | description                                                                                                                                              |
+| ------------------ | ----------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| positions          | L.LatLng[] **or** Array\[number, number\] | \[ \[0, 10\], \[-20, 0\], ... \] | A array of latitude and longitudes (same as used in [Polyline constructor](http://leafletjs.com/reference.html#polyline) )                               |
+| options            | Object                                    | {color: 'red', weight: 5, ...}   | Same as the [Polyline options](http://leafletjs.com/reference.html#polyline-options) plus the **extra** options bellow                                   |
+| options.paused     | boolean                                   | true/false                       | Starts with the animation paused (default: false)                                                                                                        |
+| options.pulseColor | string                                    | #FF00FF                          | Adds a color to the dashed flux (default: 'white')                                                                                                       |
+| options.delay      | string                                    | 120                              | Add a delay to the animation flux (default: 400)                                                                                                         |
+| options.dashArray  | [number, number] **or** string            | [15, 30]                         | The size of the animated dashes (default: "10, 20"). See also [the pattern](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray) |
 
 ---
 
