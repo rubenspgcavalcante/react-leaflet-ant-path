@@ -1,5 +1,5 @@
 const path = require("path");
-const loaders = require("./webpack/loaders");
+const rules = require("./webpack/loaders");
 const envConfs = {
     development: require("./webpack/development"),
     production: require("./webpack/production")
@@ -8,6 +8,7 @@ const envConfs = {
 const {NODE_ENV} = process.env;
 
 let configuration = {
+    devtool: "source-map",
     output: {
         path: path.resolve("./dist"),
         filename: "[name].js",
@@ -23,7 +24,7 @@ let configuration = {
         hot: true
     },
     module: {
-        loaders
+        rules
     }
 };
 
@@ -31,5 +32,5 @@ if (!NODE_ENV) {
     throw {message: "Please define your NODE_ENV"};
 }
 
-configuration = Object.assign({}, configuration, envConfs[NODE_ENV]);
+configuration = {...configuration, ...envConfs[NODE_ENV]};
 module.exports = configuration;

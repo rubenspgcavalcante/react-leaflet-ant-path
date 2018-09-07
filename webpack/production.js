@@ -1,10 +1,7 @@
-const {UglifyJsPlugin} = require("webpack").optimize;
-
 module.exports = {
     entry: {
         "react-leaflet-ant-path": "./src/AntPath.jsx"
     },
-    devtool: "source-map",
     externals: {
         "react": "react",
         "react-leaflet": "react-leaflet",
@@ -16,5 +13,5 @@ module.exports = {
             amd: "leaflet"
         }
     },
-    plugins: [new UglifyJsPlugin({minimize: true, sourceMap: true})]
+    plugins: []
 };

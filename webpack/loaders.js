@@ -25,6 +25,5 @@ module.exports = [
         ]
     },
     {test: /\.(woff2?|svg)$/, loader: "url-loader"},
-    {test: /\.(ttf|eot|png|jpge?g)$/, loader: "file-loader"},
-    {test: /\.json$/, exclude: "/node_modules/", loader: "json-loader"}
+    {test: /\.(ttf|eot|png|jpge?g)$/, loader: "file-loader"}
 ];
