@@ -1,5 +1,7 @@
 # React Leaflet Ant Path
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/rubenspgcavalcante/react-leaflet-ant-path.svg)](https://greenkeeper.io/)
+
 ## *A port of Leaflet AntPath for React Leaflet* 
 [Demo of the Leaflet AntPath](http://rubenspgcavalcante.github.io/leaflet-ant-path)  
 [Original plugin](https://github.com/rubenspgcavalcante/leaflet-ant-path/)  
