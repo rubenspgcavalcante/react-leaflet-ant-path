@@ -1,10 +1,10 @@
 language: node_js
 node_js:
-- '7'
+- '10'
 
-before_script: yarn run build
-script: yarn run test
-after_success: yarn run codacy
+before_script: yarn build
+script: yarn test
+after_success: yarn codacy
 
 cache: yarn
 branches:

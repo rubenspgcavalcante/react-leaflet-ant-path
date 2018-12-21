@@ -1,73 +1,39 @@
-const {resolve} = require('path');
+const { resolve } = require("path");
 const webpackLoaders = require("./../webpack/loaders.js");
+process.env.CHROME_BIN = require("puppeteer").executablePath();
 
-module.exports = function (config) {
-    config.set({
-        basePath: "../",
-        frameworks: ["jasmine"],
-        browsers: ["PhantomJS"],
-        plugins: [
-            "karma-webpack",
-            "karma-babel-preprocessor",
-            "karma-phantomjs-launcher",
-            "karma-jasmine",
-            "karma-sourcemap-loader",
-            "karma-sourcemap-writer",
-            "karma-coverage",
-            "karma-remap-istanbul"
-        ],
+module.exports = function(config) {
+  config.set({
+    basePath: "../",
+    frameworks: ["jasmine"],
+    browsers: ["ChromeHeadless"],
+    plugins: ["karma-webpack", "karma-chrome-launcher", "karma-jasmine"],
+    singleRun: true,
+    files: [
+      { pattern: "tests/*spec.jsx", watched: false },
+      { pattern: "tests/**/*spec.jsx", watched: false }
+    ],
 
-        reporters: ["progress", "coverage", "karma-remap-istanbul"],
+    preprocessors: {
+      "tests/*spec.jsx": ["webpack"],
+      "tests/**/*spec.jsx": ["webpack"]
+    },
 
-        preprocessors: {
-            "webpack.tests.js": ["webpack", "sourcemap", "sourcemap-writer", "coverage"]
-        },
+    webpack: {
+      devtool: "inline-source-map",
+      module: {
+        rules: [
+          {
+            test: /\.jsx?$/,
+            exclude: /node_modules|~/,
+            loader: "babel-loader"
+          }
+        ]
+      }
+    },
 
-        webpack: {
-            entry: ["./webpack.tests.js"],
-            devtool: "inline-source-map",
-            output: {
-                path: "dist/",
-                filename: "tests.js"
-            },
-            module: {
-                loaders: webpackLoaders.concat([
-                    {
-                        enforce: "pre",
-                        test: /\.js$/,
-                        include: resolve('./src/'),
-                        loader: 'istanbul-instrumenter'
-                    }
-                ])
-            }
-        },
-
-        coverageReporter: {
-            type: "json",
-            dir: "coverage/",
-            subdir: ".",
-            file: "coverage.json"
-        },
-
-        remapIstanbulReporter: {
-            reports: {
-                html: "coverage",
-                json: 'coverage/remapped.json'
-            }
-        },
-
-        files: [
-            "node_modules/babel-polyfill/dist/polyfill.min.js",
-            "./webpack.tests.js",
-        ],
-
-        singleRun: false,
-
-        stats: {
-            colors: true,
-            reasons: true
-        },
-
-        progress: true
-    });
+    webpackMiddleware: {
+      stats: "errors-only"
+    }
+  });
 };
