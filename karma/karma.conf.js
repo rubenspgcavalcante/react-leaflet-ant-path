@@ -1,73 +1,82 @@
-const {resolve} = require('path');
+const { resolve } = require("path");
+const {ProvidePlugin} = require("webpack");
+const nodeExternals = require("webpack-node-externals");
 const webpackLoaders = require("./../webpack/loaders.js");
 
-module.exports = function (config) {
-    config.set({
-        basePath: "../",
-        frameworks: ["jasmine"],
-        browsers: ["PhantomJS"],
-        plugins: [
-            "karma-webpack",
-            "karma-babel-preprocessor",
-            "karma-phantomjs-launcher",
-            "karma-jasmine",
-            "karma-sourcemap-loader",
-            "karma-sourcemap-writer",
-            "karma-coverage",
-            "karma-remap-istanbul"
-        ],
+module.exports = function(config) {
+  const testEntry = "webpack.tests.js";
 
-        reporters: ["progress", "coverage", "karma-remap-istanbul"],
+  config.set({
+    basePath: "../",
+    frameworks: ["jasmine"],
+    browsers: ["Chrome"],
+    plugins: [
+      "karma-webpack",
+      "karma-babel-preprocessor",
+      "karma-phantomjs-launcher",
+      "karma-chrome-launcher",
+      "karma-jasmine",
+      "karma-sourcemap-loader",
+      "karma-sourcemap-writer",
+      "karma-coverage",
+      "karma-remap-istanbul"
+    ],
 
-        preprocessors: {
-            "webpack.tests.js": ["webpack", "sourcemap", "sourcemap-writer", "coverage"]
-        },
+    reporters: ["progress", "coverage", "karma-remap-istanbul"],
 
-        webpack: {
-            entry: ["./webpack.tests.js"],
-            devtool: "inline-source-map",
-            output: {
-                path: "dist/",
-                filename: "tests.js"
-            },
-            module: {
-                loaders: webpackLoaders.concat([
-                    {
-                        enforce: "pre",
-                        test: /\.js$/,
-                        include: resolve('./src/'),
-                        loader: 'istanbul-instrumenter'
-                    }
-                ])
-            }
-        },
+    preprocessors: {
+      [testEntry]: ["webpack", "sourcemap", "sourcemap-writer", "coverage"]
+    },
 
-        coverageReporter: {
-            type: "json",
-            dir: "coverage/",
-            subdir: ".",
-            file: "coverage.json"
-        },
+    mime: {
+      "text/x-xhtml-javascript": ["jsx"]
+    },
 
-        remapIstanbulReporter: {
-            reports: {
-                html: "coverage",
-                json: 'coverage/remapped.json'
-            }
-        },
+    files: [{ pattern: testEntry, watch: false }],
 
-        files: [
-            "node_modules/babel-polyfill/dist/polyfill.min.js",
-            "./webpack.tests.js",
-        ],
+    webpack: {
+      mode: "production",
+      devtool: "inline-source-map",
+      output: {
+        path: "dist/",
+        filename: "[name].js"
+      },
+      node: {
+        fs: "empty"
+      },
+      module: {
+        rules: webpackLoaders.concat([
+          {
+            enforce: "pre",
+            test: /\.js$/,
+            include: resolve("./src/"),
+            loader: "istanbul-instrumenter"
+          }
+        ])
+      }
+    },
 
-        singleRun: false,
+    coverageReporter: {
+      type: "json",
+      dir: "coverage/",
+      subdir: ".",
+      file: "coverage.json"
+    },
 
-        stats: {
-            colors: true,
-            reasons: true
-        },
+    remapIstanbulReporter: {
+      reports: {
+        html: "coverage",
+        json: "coverage/remapped.json"
+      }
+    },
 
-        progress: true
-    });
+    singleRun: false,
+
+    stats: {
+      colors: true,
+      reasons: true
+    },
+
+    progress: true
+  });
 };

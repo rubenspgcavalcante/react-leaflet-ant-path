@@ -5,16 +5,16 @@ const reporter = new istanbul.Reporter();
 
 const remappedJson = require(path.resolve(__dirname, "../coverage/remapped.json"));
 const coverage = Object.keys(remappedJson).reduce((result, source) => {
-    // only keep js files under src/
-    const sourceRegExp = /src\/.*\.jsx?$/;
-    const matched = source.match(sourceRegExp);
+  // only keep js files under src/
+  const sourceRegExp = /src\/.*\.jsx?$/;
+  const matched = source.match(sourceRegExp);
 
-    if (matched) {
-        const realPath = matched[0];
-        result[realPath] = remappedJson[source];
-    }
+  if (matched) {
+    const realPath = matched[0];
+    result[realPath] = remappedJson[source];
+  }
 
-    return result;
+  return result;
 }, {});
 
 collector.add(coverage);
@@ -22,8 +22,4 @@ collector.add(coverage);
 reporter.add("lcovonly");
 reporter.add("html");
 
-reporter.write(
-    collector,
-    true,
-    () => console.info("Report clean!")
-);
+reporter.write(collector, true, () => console.info("Report clean!"));
