@@ -2,7 +2,7 @@ import React from "react";
 import {Map} from "react-leaflet";
 import {renderIntoDocument} from "react-dom/test-utils";
 import AntPathModule from "leaflet-ant-path";
-import AntPath from "./AntPath.jsx";
+import AntPath from "../src/AntPath.jsx";
 
 describe("Follow the react-leaflet component rules", () => {
     let exposedPath, exposedOptions;

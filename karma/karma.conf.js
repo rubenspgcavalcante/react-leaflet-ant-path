@@ -1,82 +1,39 @@
 const { resolve } = require("path");
-const {ProvidePlugin} = require("webpack");
-const nodeExternals = require("webpack-node-externals");
 const webpackLoaders = require("./../webpack/loaders.js");
+process.env.CHROME_BIN = require("puppeteer").executablePath();
 
 module.exports = function(config) {
-  const testEntry = "webpack.tests.js";
-
   config.set({
     basePath: "../",
     frameworks: ["jasmine"],
-    browsers: ["Chrome"],
-    plugins: [
-      "karma-webpack",
-      "karma-babel-preprocessor",
-      "karma-phantomjs-launcher",
-      "karma-chrome-launcher",
-      "karma-jasmine",
-      "karma-sourcemap-loader",
-      "karma-sourcemap-writer",
-      "karma-coverage",
-      "karma-remap-istanbul"
+    browsers: ["ChromeHeadless"],
+    plugins: ["karma-webpack", "karma-chrome-launcher", "karma-jasmine"],
+    singleRun: true,
+    files: [
+      { pattern: "tests/*spec.jsx", watched: false },
+      { pattern: "tests/**/*spec.jsx", watched: false }
     ],
 
-    reporters: ["progress", "coverage", "karma-remap-istanbul"],
-
     preprocessors: {
-      [testEntry]: ["webpack", "sourcemap", "sourcemap-writer", "coverage"]
+      "tests/*spec.jsx": ["webpack"],
+      "tests/**/*spec.jsx": ["webpack"]
     },
-
-    mime: {
-      "text/x-xhtml-javascript": ["jsx"]
-    },
-
-    files: [{ pattern: testEntry, watch: false }],
 
     webpack: {
-      mode: "production",
       devtool: "inline-source-map",
-      output: {
-        path: "dist/",
-        filename: "[name].js"
-      },
-      node: {
-        fs: "empty"
-      },
       module: {
-        rules: webpackLoaders.concat([
+        rules: [
           {
-            enforce: "pre",
-            test: /\.js$/,
-            include: resolve("./src/"),
-            loader: "istanbul-instrumenter"
+            test: /\.jsx?$/,
+            exclude: /node_modules|~/,
+            loader: "babel-loader"
           }
-        ])
+        ]
       }
     },
 
-    coverageReporter: {
-      type: "json",
-      dir: "coverage/",
-      subdir: ".",
-      file: "coverage.json"
-    },
-
-    remapIstanbulReporter: {
-      reports: {
-        html: "coverage",
-        json: "coverage/remapped.json"
-      }
-    },
-
-    singleRun: false,
-
-    stats: {
-      colors: true,
-      reasons: true
-    },
-
-    progress: true
+    webpackMiddleware: {
+      stats: "errors-only"
+    }
   });
 };
