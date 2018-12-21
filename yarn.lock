@@ -3968,9 +3968,10 @@ lcov-parse@^1.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lcov-parse/-/lcov-parse-1.0.0.tgz#eb0d46b54111ebc561acb4c408ef9363bdc8f7e0"
 
-leaflet-ant-path@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/leaflet-ant-path/-/leaflet-ant-path-1.1.2.tgz#e459471bb370fc97847a66d6adae6abef803b0e3"
+leaflet-ant-path@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/leaflet-ant-path/-/leaflet-ant-path-1.2.1.tgz#214bebb0ffa20dfa3e5e1962803df0f0216f70ce"
+  integrity sha512-aI9mmNiHKi0i4t62TFncKJTkPiC3Vciqro8thknOMDStsi2WszWmQFFgAZeMbbICC3yZY1EXrBQUPS9aoAm9zQ==
 
 leaflet@^1.0.3:
   version "1.0.3"
