@@ -1,8 +1,8 @@
 import { array, object } from "prop-types";
-import { Path, withLeaflet } from "react-leaflet";
+import { Path } from "react-leaflet";
 import { antPath } from "leaflet-ant-path";
 
-export default withLeaflet(class AntPathComponent extends Path {
+export default class AntPathComponent extends Path {
   static defaultProps = {};
 
   static propTypes = {
@@ -21,4 +21,4 @@ export default withLeaflet(class AntPathComponent extends Path {
     }
     this.leafletElement.setStyle({ ...fromProps.options, ...toProps.options });
   }
-});
+};

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Map, TileLayer } from "react-leaflet";
 
-import AntPath from "../src/AntPath";
+import AntPath from "../src/AntPathContainer";
 import Logger from "./utils/Logger";
 import path from "./sample-path.json";
 
