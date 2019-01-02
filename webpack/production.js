@@ -1,6 +1,6 @@
 module.exports = {
   entry: {
-    "react-leaflet-ant-path": "./src/index.js"
+    "react-leaflet-ant-path": "./src/AntPathContainer.jsx"
   },
   externals: {
     react: "react",

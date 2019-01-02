@@ -10,13 +10,11 @@ module.exports = function(config) {
     plugins: ["karma-webpack", "karma-chrome-launcher", "karma-jasmine"],
     singleRun: true,
     files: [
-      { pattern: "tests/*spec.jsx", watched: false },
-      { pattern: "tests/**/*spec.jsx", watched: false }
+      { pattern: "tests/*spec.jsx", watched: false }
     ],
 
     preprocessors: {
-      "tests/*spec.jsx": ["webpack"],
-      "tests/**/*spec.jsx": ["webpack"]
+      "tests/*spec.jsx": ["webpack"]
     },
 
     webpack: {
