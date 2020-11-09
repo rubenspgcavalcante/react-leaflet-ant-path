@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Map, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 
 import AntPath from "../src/AntPathContainer";
 import Logger from "./utils/Logger";
@@ -31,14 +31,14 @@ export default class App extends Component {
           </div>
         </nav>
         <div id="container" className="row">
-          <Map
+          <MapContainer
             center={[-3.75094, -38.576687]}
             zoom={10}
             className="map-container"
           >
             <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
             <AntPath positions={this.state.path} options={this.state.options} />
-          </Map>
+          </MapContainer>
         </div>
         <div className="row" id="log-container">
           {this.state.messages.map((msg, idx) => (
