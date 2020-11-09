@@ -1,5 +1,5 @@
 import React from "react";
-import { Map } from "react-leaflet";
+import { MapContainer } from "react-leaflet";
 import { mount } from "./enzyme";
 import { spy } from "sinon";
 import AntPath from "../src/AntPathContainer";
@@ -13,9 +13,9 @@ describe("Follow the react-leaflet component rules", () => {
 
   it("Should instantiate a ant-path when rendered inside a map", () => {
     mount(
-      <Map>
+      <MapContainer>
         <AntPath positions={[]} options={{}} />
-      </Map>
+      </MapContainer>
     );
     expect(antPathSpy.calledOnce).toBe(true);
   });
@@ -25,9 +25,9 @@ describe("Follow the react-leaflet component rules", () => {
     const options = { color: "red", pulseColor: "#FFF", delay: 100 };
 
     const wrapper = mount(
-      <Map>
+      <MapContainer>
         <AntPath positions={positions} options={options} />
-      </Map>
+      </MapContainer>
     );
     
     expect(wrapper.childAt(0).childAt(0).props()).toEqual({ positions, options });
