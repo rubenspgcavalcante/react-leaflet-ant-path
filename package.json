@@ -33,9 +33,10 @@
   },
   "perDependencies": {
     "leaflet": "=> 2",
-    "leaflet-ant-path": ">= 1.2.1",
+    "leaflet-ant-path": ">= 1.3.0",
     "react": ">= 16.3",
-    "react-leaflet": ">= 2"
+    "react-leaflet": ">= 3",
+    "@react-leaflet/core": ">= 3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -64,7 +65,7 @@
     "karma-jasmine": "^2.0.1",
     "karma-webpack": "^3.0.2",
     "leaflet": "^1.0.3",
-    "leaflet-ant-path": "^1.2.1",
+    "leaflet-ant-path": "^1.3.0",
     "materialize-css": "^1.0.0",
     "node-sass": "^4.11.0",
     "prettier": "1.15.3",
@@ -73,7 +74,7 @@
     "puppeteer": "^1.11.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "react-leaflet": "^2.0.1",
+    "react-leaflet": "^3.0.2",
     "sass-loader": "^7.1.0",
     "sinon": "^7.2.2",
     "style-loader": "^0.23.0",

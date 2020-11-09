@@ -1,24 +1,30 @@
-import { array, object } from "prop-types";
-import { Path } from "react-leaflet";
+import { createElementHook, createPathHook, createContainerComponent } from "@react-leaflet/core"
 import { antPath } from "leaflet-ant-path";
+import PropTypes from "prop-types";
 
-export default class AntPathComponent extends Path {
-  static defaultProps = {};
+function createAntPath(props, context) {
+  const instance = antPath(props.positions, props.options)
+  return { instance, context: { ...context, overlayContainer: instance } }
+}
 
-  static propTypes = {
-    positions: array.isRequired,
-    options: object
-  };
-
-  createLeafletElement(props) {
-    const { positions, options } = props;
-    return antPath(positions, options);
+function updateAntPath(instance, props, prevProps) {
+  if (prevProps.positions !== props.positions) {
+    instance.setLatLngs(props.positions);
   }
+  instance.setStyle({ ...prevProps.options, ...props.options });
+}
 
-  updateLeafletElement(fromProps, toProps) {
-    if (toProps.positions !== fromProps.positions) {
-      this.leafletElement.setLatLngs(toProps.positions);
-    }
-    this.leafletElement.setStyle({ ...fromProps.options, ...toProps.options });
-  }
+
+const useAntPathElement = createElementHook(createAntPath, updateAntPath)
+const useAntPath = createPathHook(useAntPathElement)
+const AntPath = createContainerComponent(useAntPath)
+
+
+AntPath.propTypes = {
+  positions: PropTypes.array.isRequired,
+  options: PropTypes.object
 };
+
+AntPath.defaultProps = {};
+
+export default AntPath
